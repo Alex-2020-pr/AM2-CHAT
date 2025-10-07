@@ -96,6 +96,9 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
             margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -106,6 +109,18 @@
         .btn-primary {
             background-color: var(--primary);
             color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--primary);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--primary-dark);
         }
 
         /* Navigation */
@@ -237,9 +252,83 @@
             color: var(--secondary);
         }
 
+        /* Funcionalidades Detalhadas */
+        .funcionalidades {
+            background-color: #f8f9fa;
+        }
+
+        .func-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .func-tab {
+            padding: 12px 25px;
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .func-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .func-tab:hover:not(.active) {
+            background-color: #e9ecef;
+        }
+
+        .func-content {
+            display: none;
+        }
+
+        .func-content.active {
+            display: block;
+        }
+
+        .func-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .func-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .func-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .func-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .func-item h3 i {
+            color: var(--primary);
+        }
+
         /* Dashboard Preview */
         .dashboard-preview {
-            background-color: #f8f9fa;
+            background-color: white;
         }
 
         .image-gallery {
@@ -426,6 +515,31 @@
             font-size: 0.9rem;
         }
 
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -464,10 +578,37 @@
             .image-gallery {
                 grid-template-columns: 1fr;
             }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .func-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .func-tab {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .func-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração do sistema de multiatendimento WhatsApp." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Navigation -->
     <nav>
         <div class="container nav-container">
@@ -477,6 +618,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#features">Funcionalidades</a></li>
+                <li><a href="#funcionalidades">Recursos</a></li>
                 <li><a href="#dashboard">Sistema</a></li>
                 <li><a href="#benefits">Vantagens</a></li>
                 <li><a href="#contact">Contato</a></li>
@@ -496,8 +638,10 @@
             </div>
             <h1>Sistema de Multiatendentes WhatsApp</h1>
             <p class="subtitle">Centralize, automatize e otimize o atendimento ao cliente no WhatsApp com nossa solução completa e integrada.</p>
-            <a href="#contact" class="btn btn-primary">Solicitar Demonstração</a>
-            <a href="#dashboard" class="btn">Conhecer o Sistema</a>
+            <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração do sistema de multiatendimento WhatsApp." class="btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Solicitar Demonstração
+            </a>
+            <a href="#funcionalidades" class="btn">Conhecer Recursos</a>
         </div>
     </header>
 
@@ -529,6 +673,107 @@
                     </div>
                     <h3>Automação Poderosa</h3>
                     <p>Respostas rápidas, chatbots e fluxos automatizados para atendimento 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Detalhadas -->
+    <section class="funcionalidades" id="funcionalidades">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recursos Completos do Sistema</h2>
+                <p>Tudo que você precisa para revolucionar seu atendimento ao cliente</p>
+            </div>
+            
+            <div class="func-tabs">
+                <button class="func-tab active" data-tab="comuns">Funcionalidades Comuns</button>
+                <button class="func-tab" data-tab="avancadas">Funcionalidades Avançadas</button>
+            </div>
+            
+            <div class="func-content active" id="comuns">
+                <div class="func-grid">
+                    <div class="func-item">
+                        <h3><i class="fas fa-users"></i> Múltiplos Atendentes</h3>
+                        <p>Permite que vários atendentes utilizem o mesmo número de WhatsApp simultaneamente, com identificação individual de cada atendente.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-sitemap"></i> Setorização de Atendimentos</h3>
+                        <p>Organiza os atendimentos por departamentos (Suporte, Vendas, Financeiro), facilitando a distribuição e gestão das conversas.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-robot"></i> Chatbot Integrado</h3>
+                        <p>Implementa respostas automáticas para perguntas frequentes, coleta de dados iniciais e direcionamento para atendentes humanos quando necessário.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-bullhorn"></i> Mensagens em Massa</h3>
+                        <p>Possibilita o envio de mensagens para múltiplos contatos simultaneamente, útil para campanhas promocionais e comunicados.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-clock"></i> Agendamento de Mensagens</h3>
+                        <p>Permite programar o envio de mensagens em datas e horários específicos, como lembretes ou felicitações.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-reply"></i> Respostas Rápidas</h3>
+                        <p>Facilita o envio de mensagens padrão com atalhos, agilizando o atendimento.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-exchange-alt"></i> Transferência de Conversas</h3>
+                        <p>Habilita a transferência de atendimentos entre atendentes ou departamentos, mantendo o histórico da conversa.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-history"></i> Histórico de Conversas</h3>
+                        <p>Armazena todas as interações com os clientes, permitindo consultas futuras e continuidade no atendimento.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-comments"></i> Chat Interno</h3>
+                        <p>Oferece um canal de comunicação interno para os atendentes trocarem informações sem sair da plataforma.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-star"></i> Avaliação de Atendimento</h3>
+                        <p>Coleta feedback dos clientes sobre o atendimento recebido, auxiliando na melhoria contínua dos serviços.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-business-time"></i> Horário de Atendimento</h3>
+                        <p>Permite definir horários específicos de funcionamento, exibindo mensagens automáticas fora do expediente.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-tags"></i> Etiquetas Personalizadas</h3>
+                        <p>Permite adicionar etiquetas customizadas em cada conversa, facilitando a categorização e filtragem de contatos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="func-content" id="avancadas">
+                <div class="func-grid">
+                    <div class="func-item">
+                        <h3><i class="fas fa-code"></i> Integração com APIs</h3>
+                        <p>Permite a conexão com outros sistemas, como CRMs e ERPs, para sincronização de dados e automação de processos.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-filter"></i> Gestão de Leads</h3>
+                        <p>Captura e organiza informações de potenciais clientes automaticamente durante as interações.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-bullseye"></i> Campanhas Personalizadas</h3>
+                        <p>Desenvolve campanhas de mensagens com variáveis personalizáveis (nome, número), aumentando a eficácia da comunicação.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-palette"></i> Interface Personalizável</h3>
+                        <p>Oferece opções de personalização da interface, como modo noturno, para melhor adaptação às preferências dos usuários.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-shield-alt"></i> Controle de Acesso</h3>
+                        <p>Define níveis de acesso para os usuários, garantindo segurança e organização nas operações.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-chart-bar"></i> Dashboards com Métricas</h3>
+                        <p>Apresenta indicadores em tempo real e relatórios analíticos sobre volume de atendimentos, tempo médio de resposta, satisfação do cliente e outros dados estratégicos.</p>
+                    </div>
+                    <div class="func-item">
+                        <h3><i class="fas fa-clipboard-check"></i> Motivo de Encerramento</h3>
+                        <p>Solicita que o atendente selecione ou registre o motivo do encerramento de cada atendimento, auxiliando na análise de padrões e na melhoria de processos.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -730,7 +975,9 @@
                 </div>
             </div>
             <div style="margin-top: 40px;">
-                <a href="#" class="btn btn-primary">Solicitar Demonstração Gratuita</a>
+                <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração gratuita do sistema de multiatendimento WhatsApp." class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Solicitar Demonstração Gratuita
+                </a>
             </div>
         </div>
     </section>
@@ -744,6 +991,7 @@
             </div>
             <div class="footer-links">
                 <a href="#features">Funcionalidades</a>
+                <a href="#funcionalidades">Recursos</a>
                 <a href="#dashboard">Sistema</a>
                 <a href="#benefits">Vantagens</a>
                 <a href="#contact">Contato</a>
@@ -773,6 +1021,19 @@
             });
         });
 
+        // Funcionalidades tabs
+        document.querySelectorAll('.func-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.func-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.func-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+
         // Simple animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -789,7 +1050,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.feature-card, .benefit-item, .image-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .benefit-item, .image-card, .stat-item, .func-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
