@@ -123,6 +123,17 @@
             background-color: var(--primary-dark);
         }
 
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--secondary);
+        }
+
         /* Navigation */
         nav {
             background-color: white;
@@ -344,6 +355,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .image-card:hover {
@@ -540,6 +552,60 @@
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
         }
 
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -600,14 +666,27 @@
             .func-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração do sistema de multiatendimento WhatsApp." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração gratuita do sistema de multiatendimento WhatsApp." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Modal para imagens -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -638,10 +717,12 @@
             </div>
             <h1>Sistema de Multiatendentes WhatsApp</h1>
             <p class="subtitle">Centralize, automatize e otimize o atendimento ao cliente no WhatsApp com nossa solução completa e integrada.</p>
-            <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração do sistema de multiatendimento WhatsApp." class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Solicitar Demonstração
-            </a>
-            <a href="#funcionalidades" class="btn">Conhecer Recursos</a>
+            <div class="header-buttons">
+                <a href="https://wa.me/5545999901802?text=Olá! Gostaria de solicitar uma demonstração gratuita do sistema de multiatendimento WhatsApp." class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Solicitar Demonstração
+                </a>
+                <a href="#funcionalidades" class="btn btn-secondary">Conhecer Recursos</a>
+            </div>
         </div>
     </header>
 
@@ -699,7 +780,7 @@
                     </div>
                     <div class="func-item">
                         <h3><i class="fas fa-sitemap"></i> Setorização de Atendimentos</h3>
-                        <p>Organiza os atendimentos por departamentos (Suporte, Vendas, Financeiro), facilitando a distribuição e gestão das conversas.</p>
+                        <p>Organiza os atendimentos por departamentos (Suporte, Vendas, Financeiro, Faturamento, Agendamento), facilitando a distribuição e gestão das conversas.</p>
                     </div>
                     <div class="func-item">
                         <h3><i class="fas fa-robot"></i> Chatbot Integrado</h3>
@@ -811,70 +892,70 @@
                 <p>Interface intuitiva e recursos avançados para otimizar seu atendimento</p>
             </div>
             <div class="image-gallery">
-                <div class="image-card">
+                <div class="image-card" data-image="paine-de-controle.png">
                     <img src="paine-de-controle.png" alt="Painel de Controle do Sistema">
                     <div class="image-card-content">
                         <h3>Painel de Controle</h3>
                         <p>Visualize métricas essenciais e acompanhe o desempenho da sua equipe.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="painel-controle-2.png">
                     <img src="painel-controle-2.png" alt="Evolução de Atendimentos">
                     <div class="image-card-content">
                         <h3>Evolução de Atendimentos</h3>
                         <p>Acompanhe o volume e desempenho dos atendimentos ao longo do tempo.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="tela-login-personalisada.png">
                     <img src="tela-login-personalisada.png" alt="Interface de Login Personalizada">
                     <div class="image-card-content">
                         <h3>Login Personalizado</h3>
                         <p>Acesso seguro e personalizado com a identidade da sua empresa.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="filtros.png">
                     <img src="filtros.png" alt="Filtros Avançados">
                     <div class="image-card-content">
                         <h3>Filtros Avançados</h3>
                         <p>Organize e encontre rapidamente os tickets por status, filas e etiquetas.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="controle-visual-atendimentos.png">
                     <img src="controle-visual-atendimentos.png" alt="Controle Visual de Atendimentos">
                     <div class="image-card-content">
                         <h3>Controle Visual</h3>
                         <p>Visualize o status de todos os atendimentos de forma organizada.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="gerencie-filas.png">
                     <img src="gerencie-filas.png" alt="Gestão de Filas">
                     <div class="image-card-content">
                         <h3>Gestão de Filas</h3>
                         <p>Organize e gerencie filas de atendimento de forma eficiente.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="monitire-atendimentos.png">
                     <img src="monitire-atendimentos.png" alt="Monitoramento de Atendimentos">
                     <div class="image-card-content">
                         <h3>Monitoramento em Tempo Real</h3>
                         <p>Acompanhe conversas e interações com seus clientes.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="msg-rapida.png">
                     <img src="msg-rapida.png" alt="Mensagens Rápidas">
                     <div class="image-card-content">
                         <h3>Mensagens Rápidas</h3>
                         <p>Agilize o atendimento com respostas pré-definidas e personalizadas.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="horários-de-atendimento.png">
                     <img src="horários-de-atendimento.png" alt="Configuração de Horários">
                     <div class="image-card-content">
                         <h3>Configuração de Horários</h3>
                         <p>Defina horários de atendimento e mensagens de ausência automaticamente.</p>
                     </div>
                 </div>
-                <div class="image-card">
+                <div class="image-card" data-image="Fluxos.png">
                     <img src="Fluxos.png" alt="Fluxos de Atendimento">
                     <div class="image-card-content">
                         <h3>Fluxos Personalizados</h3>
@@ -1012,12 +1093,15 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu after clicking a link
-                document.querySelector('.nav-links').classList.remove('active');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
             });
         });
 
@@ -1032,6 +1116,32 @@
                 this.classList.add('active');
                 document.getElementById(this.dataset.tab).classList.add('active');
             });
+        });
+
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.image-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const imageSrc = this.getAttribute('data-image');
+                modalImage.src = imageSrc;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
 
         // Simple animation on scroll
